@@ -25,7 +25,7 @@ Aktualna lista elementow:
 
 Funkcjonalnosci:
 1. obliczanie czasu reakcji, ewentualnie nutka na brzeczku rowniez timer, ewentualnie melodia ale tutaj pwm [TIMER]
-2. reagowanie na sygnal (dioda) [GPIO]
+2. reagowanie na sygnal (dioda) [GPIO/PWM] tutaj trzeba dopytac
 3. reagowanie na sygnal (dzwiek) [GPIO/PWM)
 4. zapisywanie pliku na komputerze (wyniki, wykresy, cokolwiek...) [UART]
 5. wyswietlanie menu, oraz czasu reakcji przy pojedynczej probie [WYSWIETLACZ LCD]
