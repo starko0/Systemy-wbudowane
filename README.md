@@ -32,6 +32,7 @@ Funkcjonalnosci:
 6. czujnik odleglosci (zagranie reki spod czujnika w okreslonym czasie, na dany sygnal) [URZADZENIE ZEWNETRZNE]
 7. odczyt i zapis danych na karte sd (ostatnie wyniki, podsumowanie wynikow z okreslonych gier na refleks) [SPI]
 8. silnik wibrujacy sterowany PWM (wykorzystany do sygnalizacji, np fallstartu przy grach refleks) [PWM]
+9. EEPROM (zapisywanie wynikow oraz innych danych)
 
 Rzeczy do kupienia:
 - buzzer aktywny do pkt 3
