@@ -1,4 +1,4 @@
- #include "../lib/Menu.h"
+#include "../lib/Menu.h"
 #include "../lib/defines.h"
 
 Menu menu;
@@ -9,6 +9,7 @@ void setup() {
  pinMode(BUTTON_ENTER_PIN, INPUT_PULLUP);
  pinMode(12, OUTPUT);
  pinMode(SPEAKER_PIN, OUTPUT);
+ pinMode(3, OUTPUT);
  menu.initialize();
 }
 

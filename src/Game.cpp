@@ -1,6 +1,6 @@
 #include "../lib/Game.h"
 
-void Game::beginGame() {
-  randomTime = random(200, 1000);
-  delay(randomTime * 10);
+uint16_t Game::beginGame() {;
+  interval = random(100, 500);
+  return interval * 10;
 }

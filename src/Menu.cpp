@@ -1,6 +1,7 @@
 #include "Arduino.h"
 #include "../lib//Menu.h"
 #include "../lib/SoundGame.h"
+#include <string.h>
 
 Menu::Menu(){
   menuTitle = "!! REFLEX !!";
@@ -58,6 +59,14 @@ void Menu::showResult(uint16_t result){
   lcd.print(" ms");
 }
 
+void Menu::showFalseStartMessage(){
+  lcd.init();
+  lcd.clear();
+  lcd.backlight();
+  lcd.setCursor(0,0);   //Set cursor to character 2 on line 0
+  lcd.print("! FALSE START !");
+}
+
 void Menu::handleMenu(){
   int isUpButtonPressed = digitalRead(BUTTON_UP_PIN);
   int isDownButtonPressed = digitalRead(BUTTON_DOWN_PIN);
@@ -87,20 +96,26 @@ void Menu::handleMenu(){
         SoundGame soundGame;
         beginGameStart();
         uint16_t finalResult = soundGame.play();
-        showResult(finalResult);
-        // delay(1500);
-        bool flaga = false;
-
-        while(!flaga){
-          if(!digitalRead(BUTTON_ENTER_PIN) == HIGH){
-            flaga = true;
-          }
+        if (finalResult == -1) {
+          showFalseStartMessage();
+          delay(1000);
+          displayMenu(0);
         }
-        
-        
-        displayMenu(0);
-        delay(500);
-          
+        else {
+          showResult(finalResult);
+          // delay(1500);
+          bool flaga = false;
+
+          while(!flaga){
+            if(!digitalRead(BUTTON_ENTER_PIN) == HIGH){
+              flaga = true;
+            }
+          }
+
+
+          displayMenu(0);
+          delay(500);
+        }
       }
     }
   }

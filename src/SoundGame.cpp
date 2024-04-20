@@ -2,11 +2,27 @@
 #include "../lib/SoundGame.h"
 
 uint16_t SoundGame::play() {
-  beginGame();
+  uint16_t previousMillis = millis();
+
+  uint16_t interval = beginGame() + previousMillis;
+
+  while(true) {
+    if (millis() > interval) {
+      break;
+    }
+    else{
+      if(!digitalRead(BUTTON_ENTER_PIN) == HIGH){
+        digitalWrite(3, HIGH);
+        delay(100);
+        digitalWrite(3, LOW);
+        return -1;
+      }
+    }
+  }
 
   startTime = millis();
 
-  //play sound 
+  //play sound
   while (!digitalRead(BUTTON_ENTER_PIN) == LOW) {
     playSound();
   }

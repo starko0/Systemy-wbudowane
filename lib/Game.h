@@ -5,12 +5,14 @@
 
 class Game {
   protected:
-    uint16_t randomTime;
+    uint16_t interval;
+    uint16_t previousMillis;
     uint16_t startTime;
     uint16_t stopTime;
     uint16_t finalResult;
     
   public:
     virtual uint16_t play();
-    void beginGame();
+
+    uint16_t beginGame();
 };

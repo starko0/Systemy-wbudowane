@@ -21,6 +21,7 @@ class Menu{
     void soundGame();
     void beginGameStart();
     void showResult(uint16_t result);
+    void showFalseStartMessage();
 
 
   private:    
