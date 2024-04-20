@@ -1,5 +1,5 @@
 #include "Arduino.h"
-#include "SoundGame.h"
+#include "../lib/SoundGame.h"
 
 uint16_t SoundGame::play() {
   beginGame();

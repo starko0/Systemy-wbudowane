@@ -1,6 +1,6 @@
 #include "Arduino.h"
-#include "Menu.h"
-#include "SoundGame.h"
+#include "../lib//Menu.h"
+#include "../lib/SoundGame.h"
 
 Menu::Menu(){
   menuTitle = "!! REFLEX !!";

@@ -1,4 +1,4 @@
-#include "Game.h"
+#include "../lib/Game.h"
 
 void Game::beginGame() {
   randomTime = random(200, 1000);
