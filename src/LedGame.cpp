@@ -1,7 +1,8 @@
-#include "Arduino.h"
-#include "../lib/SoundGame.h"
+#include "../lib/LedGame.h"
+#include "../lib/defines.h"
 
-uint16_t SoundGame::play() {
+uint16_t LedGame::play()
+{
   uint16_t previousMillis = millis();
 
   uint16_t interval = beginGame() + previousMillis;
@@ -19,19 +20,23 @@ uint16_t SoundGame::play() {
 
   startTime = millis();
 
-  //play sound
   while (!digitalRead(BUTTON_ENTER_PIN) == LOW) {
-    playSound();
+    turnOnLed();
   }
+
   stopTime = millis();
-  stopSound();
+  turnOffLed();
   return stopTime - startTime;
+
 }
 
-void SoundGame::playSound() {
-  digitalWrite(SPEAKER_PIN, HIGH);
+
+void LedGame::turnOnLed()
+{
+  analogWrite(LED_GAME_LED_PIN, 255);
 }
 
-void SoundGame::stopSound(){
-  digitalWrite(SPEAKER_PIN, LOW);
+void LedGame::turnOffLed()
+{
+  analogWrite(LED_GAME_LED_PIN, 0);
 }

@@ -8,8 +8,7 @@ void setup() {
  pinMode(BUTTON_DOWN_PIN, INPUT_PULLUP);
  pinMode(BUTTON_ENTER_PIN, INPUT_PULLUP);
  pinMode(12, OUTPUT);
- pinMode(SPEAKER_PIN, OUTPUT);
- pinMode(3, OUTPUT);
+ pinMode(SOUND_GAME_BUZZER_PIN, OUTPUT);
  menu.initialize();
 }
 

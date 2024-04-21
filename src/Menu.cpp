@@ -3,6 +3,8 @@
 #include "../lib/SoundGame.h"
 #include <string.h>
 
+#include "../lib/LedGame.h"
+
 Menu::Menu(){
   menuTitle = "!! REFLEX !!";
   menuOptions[0]="1. Dzwiek";
@@ -60,9 +62,7 @@ void Menu::showResult(uint16_t result){
 }
 
 void Menu::showFalseStartMessage(){
-  lcd.init();
   lcd.clear();
-  lcd.backlight();
   lcd.setCursor(0,0);   //Set cursor to character 2 on line 0
   lcd.print("! FALSE START !");
 }
@@ -96,9 +96,13 @@ void Menu::handleMenu(){
         SoundGame soundGame;
         beginGameStart();
         uint16_t finalResult = soundGame.play();
-        if (finalResult == -1) {
+        if (finalResult == 1) {
+          analogWrite(FALSE_START_LED_PIN, 255);
+          analogWrite(VIBRATION_PIN, 255);
           showFalseStartMessage();
           delay(1000);
+          digitalWrite(FALSE_START_LED_PIN, LOW);
+          analogWrite(VIBRATION_PIN, 0);
           displayMenu(0);
         }
         else {
@@ -115,6 +119,36 @@ void Menu::handleMenu(){
 
           displayMenu(0);
           delay(500);
+          break;
+        }
+      }
+      case 1: {
+        LedGame ledGame;
+        beginGameStart();
+        uint16_t finalResult = ledGame.play();
+        if (finalResult == 1) {
+          analogWrite(FALSE_START_LED_PIN, 255);
+          analogWrite(VIBRATION_PIN, 255);
+          showFalseStartMessage();
+          delay(1000);
+          digitalWrite(FALSE_START_LED_PIN, LOW);
+          analogWrite(VIBRATION_PIN, 0);
+          displayMenu(0);
+        }
+        else {
+          showResult(finalResult);
+          // delay(1500);
+          bool flaga = false;
+
+          while(!flaga){
+            if(!digitalRead(BUTTON_ENTER_PIN) == HIGH){
+              flaga = true;
+            }
+          }
+
+          displayMenu(0);
+          delay(500);
+          break;
         }
       }
     }
