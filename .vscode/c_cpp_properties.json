@@ -1,0 +1,58 @@
+//
+// !!! WARNING !!! AUTO-GENERATED FILE!
+// PLEASE DO NOT MODIFY IT AND USE "platformio.ini":
+// https://docs.platformio.org/page/projectconf/section_env_build.html#build-flags
+//
+{
+    "configurations": [
+        {
+            "name": "PlatformIO",
+            "includePath": [
+                "/home/piotrek/Documents/studia/rok_2/semestr_4/wbudy/Systemy-wbudowane/include",
+                "/home/piotrek/Documents/studia/rok_2/semestr_4/wbudy/Systemy-wbudowane/src",
+                "/home/piotrek/Documents/studia/rok_2/semestr_4/wbudy/Systemy-wbudowane/.pio/libdeps/uno/LiquidCrystal_I2C",
+                "/home/piotrek/.platformio/packages/framework-arduino-avr/libraries/Wire/src",
+                "/home/piotrek/.platformio/packages/framework-arduino-avr/cores/arduino",
+                "/home/piotrek/.platformio/packages/framework-arduino-avr/variants/standard",
+                "/home/piotrek/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
+                "/home/piotrek/.platformio/packages/framework-arduino-avr/libraries/HID/src",
+                "/home/piotrek/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
+                "/home/piotrek/.platformio/packages/framework-arduino-avr/libraries/SoftwareSerial/src",
+                ""
+            ],
+            "browse": {
+                "limitSymbolsToIncludedHeaders": true,
+                "path": [
+                    "/home/piotrek/Documents/studia/rok_2/semestr_4/wbudy/Systemy-wbudowane/include",
+                    "/home/piotrek/Documents/studia/rok_2/semestr_4/wbudy/Systemy-wbudowane/src",
+                    "/home/piotrek/Documents/studia/rok_2/semestr_4/wbudy/Systemy-wbudowane/.pio/libdeps/uno/LiquidCrystal_I2C",
+                    "/home/piotrek/.platformio/packages/framework-arduino-avr/libraries/Wire/src",
+                    "/home/piotrek/.platformio/packages/framework-arduino-avr/cores/arduino",
+                    "/home/piotrek/.platformio/packages/framework-arduino-avr/variants/standard",
+                    "/home/piotrek/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
+                    "/home/piotrek/.platformio/packages/framework-arduino-avr/libraries/HID/src",
+                    "/home/piotrek/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
+                    "/home/piotrek/.platformio/packages/framework-arduino-avr/libraries/SoftwareSerial/src",
+                    ""
+                ]
+            },
+            "defines": [
+                "PLATFORMIO=60114",
+                "ARDUINO_AVR_UNO",
+                "F_CPU=16000000L",
+                "ARDUINO_ARCH_AVR",
+                "ARDUINO=10808",
+                "__AVR_ATmega328P__",
+                ""
+            ],
+            "cStandard": "gnu11",
+            "cppStandard": "gnu++11",
+            "compilerPath": "/home/piotrek/.platformio/packages/toolchain-atmelavr/bin/avr-gcc",
+            "compilerArgs": [
+                "-mmcu=atmega328p",
+                ""
+            ]
+        }
+    ],
+    "version": 4
+}

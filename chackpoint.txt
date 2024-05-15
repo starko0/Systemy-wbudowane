@@ -1,0 +1,22 @@
+
+Systemy wbudowane – checkpoint
+
+Data: 24.04.2024
+Tytuł projektu: Gra refleks
+Zespół: E08
+Członkowie zespołu: Tomasz Starczyk(lider) 247791, 
+			Kacper Stasiak 	  247792, 
+			Piotr Polakowski 	  247768
+
+Wymagania zaplanowane do zrealizowania:
+    • Podłączenie zasilacza, przycisków, wyświetlacza i diód na płytce stykowej, połączenie całego układu z płytką Arduino
+    • Wyświetlenie na ekranie podstawowego menu
+    • Podstawowa implementacja jednego z typów gry refleks
+
+Do tej pory udało się zrealizować:
+    • Podłączono wyświetlacz poprzez konwerter I2c(4 piny – VCC +5V, GND, SDA, SCL) za pomocą płytki stykowej do Arduino, wyświetlacz działa bez zastrzeżeń
+    • Za pomocą pinów GPIO podłączono przyciski sterujące menu(góra-dół) oraz przycisk enter, podłączono również diodę LED w układzie z rezystorem
+    • Zaimplementowano podstawowe MENU programu – na wyświetlaczu jest dostępnych kilka opcji, można się przełączać między nimi
+    • Zaimplementowano obliczanie czasu reakcji na określone wydarzenie(dźwięk bądź światło) w logice programu
+    • Zaimplementowano dwa typy gry – reakcję na dźwięk(buzzer) oraz na światło(dioda)
+    • Zaimplementowano reakcję na false start -  zbyt wczesne przyciśnięcie przycisku podczas gry refleks(wibracje) 
