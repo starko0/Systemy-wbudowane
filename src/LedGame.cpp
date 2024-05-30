@@ -1,5 +1,6 @@
 #include "../lib/LedGame.h"
 #include "../lib/defines.h"
+#include "../lib/EEPROMController.h"
 
 uint16_t LedGame::play() {
     uint16_t previousMillis = millis();

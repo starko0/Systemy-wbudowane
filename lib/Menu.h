@@ -4,6 +4,7 @@
 #include <Arduino.h>
 #include <LiquidCrystal_I2C.h>
 
+#include "../lib/EEPROMController.h"
 
 #define BUTTON_UP_PIN 13
 #define BUTTON_DOWN_PIN 8
@@ -12,6 +13,7 @@
 class Menu{
    public:
     LiquidCrystal_I2C lcd = LiquidCrystal_I2C(0x27,16,2);
+    EEPROMController epromController;
     Menu();
     String menuOptions[4];
     uint8_t optionNumber;

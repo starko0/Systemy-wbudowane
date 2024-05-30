@@ -1,7 +1,10 @@
+#pragma once
+
 #include "Arduino.h"
 #include "../lib//Menu.h"
 #include "../lib/SoundGame.h"
 #include <string.h>
+#include "../lib/GameData.h"
 
 #include "../lib/LedGame.h"
 
@@ -33,6 +36,7 @@ void Menu::initialize() {
     lcd.print(menuTitle);
     lcd.setCursor(0, 1);   //Move cursor to character 2 on line 1
     lcd.print(menuOptions[0]);
+    Serial.begin(9600);
 }
 
 void Menu::beginGameStart() {
@@ -106,7 +110,14 @@ void Menu::handleMenu() {
                     displayMenu(0);
                 } else {
                     showResult(finalResult);
-                    // delay(1500);
+                    GameData soundGameData;
+                    soundGameData.setReflexTime(finalResult);
+                    soundGameData.setGameType(0);
+                    soundGameData.setDate("10.10.2000");
+                    epromController.addGameData(soundGameData);
+                    epromController.saveGameData();
+                    Serial.println(epromController.getGameDataAsString());
+                    delay(500);
                     bool flaga = false;
 
                     while (!flaga) {
@@ -134,8 +145,15 @@ void Menu::handleMenu() {
                     analogWrite(VIBRATION_PIN, 0);
                     displayMenu(0);
                 } else {
+                    GameData ledGameData;
+                    ledGameData.setReflexTime(finalResult);
+                    ledGameData.setGameType(1);
+                    ledGameData.setDate("10.10.2000");
+                    epromController.addGameData(ledGameData);
+                    epromController.saveGameData();
+                    Serial.println(epromController.getGameDataAsString());
                     showResult(finalResult);
-                    // delay(1500);
+                    delay(500);
                     bool flaga = false;
 
                     while (!flaga) {
