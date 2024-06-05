@@ -17,22 +17,24 @@ uint16_t GameData::getReflexTime() {
     return reflexTime;
 }
 
-void GameData::setDate(String date) {
-    this->date = date;
+void GameData::setDate(char* date) {
+    for (int i = 0; i < 20; i++) {
+        this->date[i] = date[i];
+    }
 }
 
-String GameData::getDate() {
+char* GameData::getDate() {
     return date;
 }
 
 GameData::GameData() {
     this->gameType = 0;
     this->reflexTime = 0;
-    this->date = "";
+    strcpy(this->date, "19:00:00 10.10.2000");
 }
 
 GameData::GameData(uint8_t gameType, uint16_t reflexTime, String date) {
     this->gameType = gameType;
     this->reflexTime = reflexTime;
-    this->date = date;
+    strcpy(this->date, date.c_str());
 }

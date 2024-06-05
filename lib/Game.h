@@ -6,10 +6,10 @@
 
 class Game {
   protected:
-    uint16_t interval;
-    uint16_t previousMillis;
-    uint16_t startTime;
-    uint16_t stopTime;
+    unsigned long interval;
+    unsigned long previousMillis;
+    unsigned long startTime;
+    unsigned long stopTime;
     uint16_t finalResult;
 
   public:

@@ -12,7 +12,7 @@ Menu::Menu() {
     menuTitle = "!! REFLEX !!";
     menuOptions[0] = "1. Dzwiek";
     menuOptions[1] = "2. Dioda";
-    menuOptions[2] = "3. Zabierz reke";
+    menuOptions[2] = "3. Czysc EEPROM";
     menuOptions[3] = "4. Klimat";
     optionNumber = 0;
 }
@@ -65,6 +65,16 @@ void Menu::showResult(uint16_t result) {
     lcd.print(" ms");
 }
 
+void Menu::handleEEPROMClear() {
+    lcd.init();
+    lcd.clear();
+    lcd.backlight();
+    lcd.setCursor(5, 0);   //Set cursor to character 2 on line 0
+    lcd.print("Clearing...");
+    epromController.clearEEPROM();
+    epromController.clearGameData();
+}
+
 void Menu::showFalseStartMessage() {
     lcd.clear();
     lcd.setCursor(0, 0);   //Set cursor to character 2 on line 0
@@ -110,15 +120,38 @@ void Menu::handleMenu() {
                     displayMenu(0);
                 } else {
                     showResult(finalResult);
+                    //epromController.clearEEPROM();
                     GameData soundGameData;
                     soundGameData.setReflexTime(finalResult);
                     soundGameData.setGameType(0);
-                    soundGameData.setDate("10.10.2000");
+                    soundGameData.setDate("19:00:00 10.10.2000");
                     epromController.addGameData(soundGameData);
                     epromController.saveGameData();
+                    Serial.println("Dane z eepromController: ");
                     Serial.println(epromController.getGameDataAsString());
-                    delay(500);
+                    // Serial.println("");
+                    // Serial.println("");
+
+                    // Serial.println("Dane z eeprom: ");      
+                    // Deque<GameData> dataRead = Deque<GameData>(5);
+                    // GameData testGameData;
+                    // String testString;
+                    // // for(int i=0;i<23;i++){
+                    // //     if (i > 2) {
+                    // //         testString += char(EEPROM.read(i));
+                    // //     } else {
+                    // //         testString += EEPROM.read(i);
+                    // //     }
+                        
+                    // // }
+                    
+                    // // Serial.println(testString);
+                    
+                    // testGameData = EEPROM.get(0, testGameData);
+
                     bool flaga = false;
+                    
+
 
                     while (!flaga) {
                         if (!digitalRead(BUTTON_ENTER_PIN) == HIGH) {
@@ -151,9 +184,9 @@ void Menu::handleMenu() {
                     ledGameData.setDate("10.10.2000");
                     epromController.addGameData(ledGameData);
                     epromController.saveGameData();
+                    Serial.println("data saved");
                     Serial.println(epromController.getGameDataAsString());
                     showResult(finalResult);
-                    delay(500);
                     bool flaga = false;
 
                     while (!flaga) {
@@ -167,6 +200,13 @@ void Menu::handleMenu() {
                     break;
                 }
             }
+            case 2:{
+                handleEEPROMClear();
+                displayMenu(0);
+                delay(500);
+                break;
+            }
+            
         }
     }
 

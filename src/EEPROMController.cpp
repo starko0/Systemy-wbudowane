@@ -1,7 +1,11 @@
 #include "../lib/EEPROMController.h"
 
 EEPROMController::EEPROMController() {
-    this->dataToSave = EEPROM.get(0, dataToSave);
+    uint8_t index = 0;
+    for (int i = 0; i < maxitems; i++) {
+        this->dataToSave.push_back(EEPROM.get(index, dataToSave[0]));
+        index += sizeof(GameData)-1;
+    }
 }
 
 void EEPROMController::addGameData(GameData dataToSave) {
@@ -12,7 +16,12 @@ void EEPROMController::addGameData(GameData dataToSave) {
 }
 
 void EEPROMController::saveGameData() {
-    EEPROM.put(0, this->dataToSave);
+    uint8_t index = 0;
+    for (int i = 0; i < this->dataToSave.count(); i++) {
+        EEPROM.put(index, this->dataToSave[i]);
+        index += sizeof(GameData)-1;
+    }
+
 }
 
 Deque<GameData> EEPROMController::getGameData() {
@@ -25,4 +34,14 @@ String EEPROMController::getGameDataAsString() {
         data += "Game Type: " + String(this->dataToSave[i].getGameType()) + " Reflex Time: " + String(this->dataToSave[i].getReflexTime()) + " Date: " + this->dataToSave[i].getDate() + "\n";
     }
     return data;
+}
+
+void EEPROMController::clearEEPROM() {
+    for(int i=0; i<EEPROM.length(); i++ ) {
+        EEPROM.write(i, 0);
+    }
+}
+
+void EEPROMController::clearGameData() {
+    this->dataToSave.clear();
 }

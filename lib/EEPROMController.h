@@ -14,5 +14,7 @@ class EEPROMController {
     void saveGameData();
     Deque<GameData> getGameData();
     String getGameDataAsString();
+    void clearEEPROM();
+    void clearGameData();
 };
 

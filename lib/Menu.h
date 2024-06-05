@@ -24,6 +24,7 @@ class Menu{
     void beginGameStart();
     void showResult(uint16_t result);
     void showFalseStartMessage();
+    void handleEEPROMClear();
 
 
   private:    

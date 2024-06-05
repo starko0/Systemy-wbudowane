@@ -3,9 +3,9 @@
 #include "../lib/EEPROMController.h"
 
 uint16_t LedGame::play() {
-    uint16_t previousMillis = millis();
+    unsigned long previousMillis = millis();
 
-    uint16_t interval = beginGame() + previousMillis;
+    unsigned long interval = beginGame() + previousMillis;
 
     while (true) {
         if (millis() > interval) {
