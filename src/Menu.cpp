@@ -183,9 +183,11 @@ void Menu::handleMenu() {
                     delay(500);
                 } else {
                     GameData ledGameData;
+                    char date[25];
                     ledGameData.setReflexTime(finalResult);
                     ledGameData.setGameType(1);
-                    ledGameData.setDate("10.10.2000");
+                    rtcController.getCurrentDateAsString().toCharArray(date, 25);
+                    ledGameData.setDate(date);
                     epromController.addGameData(ledGameData);
                     epromController.saveGameData();
                     Serial.println("data saved");

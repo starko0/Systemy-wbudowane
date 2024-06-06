@@ -6,6 +6,8 @@ EEPROMController::EEPROMController() {
         this->dataToSave.push_back(EEPROM.get(index, dataToSave[0]));
         index += sizeof(GameData)-1;
     }
+
+
 }
 
 void EEPROMController::addGameData(GameData dataToSave) {
@@ -17,10 +19,12 @@ void EEPROMController::addGameData(GameData dataToSave) {
 
 void EEPROMController::saveGameData() {
     uint8_t index = 0;
-    for (int i = 0; i < this->dataToSave.count(); i++) {
+    for (int i = 0; i < 5 ; i++) {
         EEPROM.put(index, this->dataToSave[i]);
         index += sizeof(GameData)-1;
     }
+    this->printEEPROM();
+    Serial.println(this->dataToSave.count());
 
 }
 
@@ -44,4 +48,15 @@ void EEPROMController::clearEEPROM() {
 
 void EEPROMController::clearGameData() {
     this->dataToSave.clear();
+}
+
+void EEPROMController::printEEPROM() {
+    for (size_t i = 0; i < sizeof(GameData) * 5; i++)
+    {
+        Serial.print("Index: ");
+        Serial.print(i);
+        Serial.print(" Value: ");
+        Serial.println(EEPROM.read(i));
+    }
+    
 }

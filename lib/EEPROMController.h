@@ -16,5 +16,6 @@ class EEPROMController {
     String getGameDataAsString();
     void clearEEPROM();
     void clearGameData();
+    void printEEPROM();
 };
 
