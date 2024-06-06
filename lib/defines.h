@@ -1,4 +1,4 @@
-#define BUTTON_UP_PIN 13
+#define BUTTON_UP_PIN 6
 #define BUTTON_DOWN_PIN 8
 #define BUTTON_ENTER_PIN 7
 #define SPEAKER_PIN 4
@@ -6,5 +6,6 @@
 #define FALSE_START_LED_PIN 2
 #define LED_GAME_LED_PIN A0
 #define SOUND_GAME_BUZZER_PIN 4
+#define LED_MENU 3
 
 #define MAX_CHAR_ARRAY_SIZE 20

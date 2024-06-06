@@ -20,3 +20,4 @@ Do tej pory udało się zrealizować:
     • Zaimplementowano obliczanie czasu reakcji na określone wydarzenie(dźwięk bądź światło) w logice programu
     • Zaimplementowano dwa typy gry – reakcję na dźwięk(buzzer) oraz na światło(dioda)
     • Zaimplementowano reakcję na false start -  zbyt wczesne przyciśnięcie przycisku podczas gry refleks(wibracje) 
+    • Zapisywanie i odczytywanie z pamieci EEPROM.

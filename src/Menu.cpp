@@ -86,7 +86,7 @@ void Menu::handleMenu() {
     int isDownButtonPressed = digitalRead(BUTTON_DOWN_PIN);
     int isEnterButtonPressed = digitalRead(BUTTON_ENTER_PIN);
     if (!isUpButtonPressed == HIGH) {
-        digitalWrite(12, HIGH);
+        digitalWrite(LED_MENU, HIGH);
         if (optionNumber > 0) {
             optionNumber--;
             displayMenu(optionNumber);
@@ -96,7 +96,7 @@ void Menu::handleMenu() {
 
     if (!isDownButtonPressed == HIGH) {
 
-        digitalWrite(12, HIGH);
+        digitalWrite(LED_MENU, HIGH);
         if (optionNumber < 3) {
             optionNumber++;
             displayMenu(optionNumber);
@@ -117,7 +117,9 @@ void Menu::handleMenu() {
                     delay(1000);
                     digitalWrite(FALSE_START_LED_PIN, LOW);
                     analogWrite(VIBRATION_PIN, 0);
-                    displayMenu(0);
+                    this->optionNumber = 0;
+                    displayMenu(optionNumber);
+                    delay(500);
                 } else {
                     showResult(finalResult);
                     //epromController.clearEEPROM();
@@ -159,11 +161,11 @@ void Menu::handleMenu() {
                         }
                     }
 
-
-                    displayMenu(0);
+                    this->optionNumber = 0;
+                    displayMenu(optionNumber);
                     delay(500);
-                    break;
                 }
+                break;
             }
             case 1: {
                 LedGame ledGame;
@@ -176,7 +178,9 @@ void Menu::handleMenu() {
                     delay(1000);
                     digitalWrite(FALSE_START_LED_PIN, LOW);
                     analogWrite(VIBRATION_PIN, 0);
-                    displayMenu(0);
+                    this->optionNumber = 1;
+                    displayMenu(optionNumber);
+                    delay(500);
                 } else {
                     GameData ledGameData;
                     ledGameData.setReflexTime(finalResult);
@@ -195,14 +199,17 @@ void Menu::handleMenu() {
                         }
                     }
 
-                    displayMenu(0);
+                    this->optionNumber = 1;
+                    displayMenu(optionNumber);
                     delay(500);
-                    break;
+            
                 }
+                break;
             }
             case 2:{
                 handleEEPROMClear();
-                displayMenu(0);
+                this->optionNumber = 2;
+                displayMenu(optionNumber);
                 delay(500);
                 break;
             }
@@ -210,7 +217,7 @@ void Menu::handleMenu() {
         }
     }
 
-    digitalWrite(12, LOW);
+    digitalWrite(LED_MENU, LOW);
 }
 
 

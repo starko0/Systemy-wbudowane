@@ -1,3 +1,15 @@
-Tomek - dalmierz, melodia (Sentino szef) ewentualnie 
-piter - SD, komputer ewentualnie, napisz kacprowi baze do dokumentacji
-kacper - dokumentacja
+wyswietlacz, rtc, gpio, pwm, uart, eeprom, konwerter i2c, timer
+
+Kacper
+- wyswietlacz
+- konwerter i2c
+- timer
+
+Tomek 
+- gpio
+- pwm
+- uart
+
+Piotr
+- eeprom
+- rtc

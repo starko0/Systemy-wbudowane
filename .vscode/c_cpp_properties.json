@@ -10,6 +10,7 @@
             "includePath": [
                 "C:/Users/Tomasz/Desktop/Systemy-wbudowane/include",
                 "C:/Users/Tomasz/Desktop/Systemy-wbudowane/src",
+                "C:/Users/Tomasz/Desktop/Systemy-wbudowane/.pio/libdeps/uno/DS3231",
                 "C:/Users/Tomasz/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
                 "C:/Users/Tomasz/Desktop/Systemy-wbudowane/.pio/libdeps/uno/LiquidCrystal_I2C",
                 "C:/Users/Tomasz/.platformio/packages/framework-arduino-avr/libraries/Wire/src",
@@ -25,6 +26,7 @@
                 "path": [
                     "C:/Users/Tomasz/Desktop/Systemy-wbudowane/include",
                     "C:/Users/Tomasz/Desktop/Systemy-wbudowane/src",
+                    "C:/Users/Tomasz/Desktop/Systemy-wbudowane/.pio/libdeps/uno/DS3231",
                     "C:/Users/Tomasz/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
                     "C:/Users/Tomasz/Desktop/Systemy-wbudowane/.pio/libdeps/uno/LiquidCrystal_I2C",
                     "C:/Users/Tomasz/.platformio/packages/framework-arduino-avr/libraries/Wire/src",
