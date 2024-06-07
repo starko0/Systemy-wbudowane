@@ -17,5 +17,6 @@ class EEPROMController {
     void clearEEPROM();
     void clearGameData();
     void printEEPROM();
+    void loadDataFromEEPROM();
 };
 

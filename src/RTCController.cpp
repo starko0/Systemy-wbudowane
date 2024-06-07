@@ -5,6 +5,7 @@
 
 RTCController::RTCController() {
     //this->rtc.begin();
+    //this->rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));
 } 
 
 String RTCController::getCurrentDateAsString() {

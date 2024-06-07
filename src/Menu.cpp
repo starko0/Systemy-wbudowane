@@ -73,6 +73,7 @@ void Menu::handleEEPROMClear() {
     lcd.print("Clearing...");
     epromController.clearEEPROM();
     epromController.clearGameData();
+    epromController.loadDataFromEEPROM();
 }
 
 void Menu::showFalseStartMessage() {
