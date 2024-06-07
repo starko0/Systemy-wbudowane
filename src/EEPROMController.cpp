@@ -30,7 +30,9 @@ Deque<GameData> EEPROMController::getGameData() {
 String EEPROMController::getGameDataAsString() {
     String data = "";
     for(int i = 0; i < this->dataToSave.count(); i++) {
-        data += "Game Type: " + String(this->dataToSave[i].getGameType()) + " Reflex Time: " + String(this->dataToSave[i].getReflexTime()) + " Date: " + this->dataToSave[i].getDate() + "\n";
+        char* currDate = this->dataToSave[i].getDate();
+        data += "Game Type: " + String(this->dataToSave[i].getGameType()) + " Reflex Time: " + String(this->dataToSave[i].getReflexTime()) + " Date: " + currDate + "\n";
+        delete[] currDate;
     }
     return data;
 }

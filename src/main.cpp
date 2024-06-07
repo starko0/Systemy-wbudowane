@@ -10,7 +10,8 @@ void setup() {
     pinMode(12, OUTPUT);
     pinMode(SOUND_GAME_BUZZER_PIN, OUTPUT);
     menu.initialize();
-    pinMode(8, OUTPUT);
+    //pinMode(8, OUTPUT);
+    //pinMode(7, OUTPUT)
 }
 
 void loop() {

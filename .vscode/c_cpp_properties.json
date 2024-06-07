@@ -10,10 +10,10 @@
             "includePath": [
                 "/home/piotrek/Documents/studia/rok_2/semestr_4/wbudy/Systemy-wbudowane/include",
                 "/home/piotrek/Documents/studia/rok_2/semestr_4/wbudy/Systemy-wbudowane/src",
+                "/home/piotrek/Documents/studia/rok_2/semestr_4/wbudy/Systemy-wbudowane/.pio/libdeps/uno/SD/src",
                 "/home/piotrek/Documents/studia/rok_2/semestr_4/wbudy/Systemy-wbudowane/.pio/libdeps/uno/RTClib/src",
                 "/home/piotrek/Documents/studia/rok_2/semestr_4/wbudy/Systemy-wbudowane/.pio/libdeps/uno/Adafruit BusIO",
                 "/home/piotrek/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
-                "/home/piotrek/Documents/studia/rok_2/semestr_4/wbudy/Systemy-wbudowane/.pio/libdeps/uno/DS3231",
                 "/home/piotrek/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
                 "/home/piotrek/Documents/studia/rok_2/semestr_4/wbudy/Systemy-wbudowane/.pio/libdeps/uno/LiquidCrystal_I2C",
                 "/home/piotrek/.platformio/packages/framework-arduino-avr/libraries/Wire/src",
@@ -28,10 +28,10 @@
                 "path": [
                     "/home/piotrek/Documents/studia/rok_2/semestr_4/wbudy/Systemy-wbudowane/include",
                     "/home/piotrek/Documents/studia/rok_2/semestr_4/wbudy/Systemy-wbudowane/src",
+                    "/home/piotrek/Documents/studia/rok_2/semestr_4/wbudy/Systemy-wbudowane/.pio/libdeps/uno/SD/src",
                     "/home/piotrek/Documents/studia/rok_2/semestr_4/wbudy/Systemy-wbudowane/.pio/libdeps/uno/RTClib/src",
                     "/home/piotrek/Documents/studia/rok_2/semestr_4/wbudy/Systemy-wbudowane/.pio/libdeps/uno/Adafruit BusIO",
                     "/home/piotrek/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
-                    "/home/piotrek/Documents/studia/rok_2/semestr_4/wbudy/Systemy-wbudowane/.pio/libdeps/uno/DS3231",
                     "/home/piotrek/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
                     "/home/piotrek/Documents/studia/rok_2/semestr_4/wbudy/Systemy-wbudowane/.pio/libdeps/uno/LiquidCrystal_I2C",
                     "/home/piotrek/.platformio/packages/framework-arduino-avr/libraries/Wire/src",

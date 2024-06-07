@@ -17,8 +17,9 @@ class Menu{
     EEPROMController epromController;
     RTCController rtcController;
     Menu();
-    String menuOptions[4];
+    String menuOptions[6];
     uint8_t optionNumber;
+    void timerDelay(uint16_t delayTime);
     void displayMenu(uint8_t optionNumber);
     void initialize();
     void handleMenu();
@@ -27,6 +28,7 @@ class Menu{
     void showResult(uint16_t result);
     void showFalseStartMessage();
     void handleEEPROMClear();
+    int chooseNumber(int minValue, int maxValue, String message);
 
 
   private:    
