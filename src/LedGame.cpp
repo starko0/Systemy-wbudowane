@@ -31,9 +31,9 @@ uint16_t LedGame::play() {
 
 
 void LedGame::turnOnLed() {
-    analogWrite(LED_GAME_LED_PIN, 255);
+    analogWrite(LED_GAME_LED_PIN, LED_ON_VALUE);
 }
 
 void LedGame::turnOffLed() {
-    analogWrite(LED_GAME_LED_PIN, 0);
+    analogWrite(LED_GAME_LED_PIN, LED_OFF_VALUE);
 }

@@ -1,10 +1,17 @@
 #pragma once
+
 #include "Game.h"
 
-class LedGame: public Game {
+#define LED_ON_VALUE 255
+#define LED_OFF_VALUE 0
+
+class LedGame : public Game {
 public:
-    void turnOnLed();
-    void showResult();
     uint16_t play() override;
+
+    void turnOnLed();
+
+    void showResult();
+
     void turnOffLed();
 };

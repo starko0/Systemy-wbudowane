@@ -28,15 +28,12 @@ void Menu::timerDelay(uint16_t delayTime)
 }
 
 void Menu::displayMenu(uint8_t optionNumber) {
-
-
     lcd.clear();
     lcd.backlight();
     lcd.clear();
-    lcd.setCursor(0, 0);   //Set cursor to character 2 on line 0
+    lcd.setCursor(0, 0);
     lcd.print(menuTitle);
-
-    lcd.setCursor(0, 1);   //Move cursor to character 2 on line 1
+    lcd.setCursor(0, 1);
     lcd.print(menuOptions[optionNumber]);
 }
 
@@ -44,9 +41,9 @@ void Menu::initialize() {
     lcd.init();
     lcd.clear();
     lcd.backlight();
-    lcd.setCursor(0, 0);   //Set cursor to character 2 on line 0
+    lcd.setCursor(0, 0);
     lcd.print(menuTitle);
-    lcd.setCursor(0, 1);   //Move cursor to character 2 on line 1
+    lcd.setCursor(0, 1);
     lcd.print(menuOptions[0]);
     Serial.begin(9600);
 }
@@ -62,7 +59,7 @@ void Menu::beginGameStart() {
         delay(900);
         lcd.clear();
     }
-    lcd.setCursor(2, 1);
+    lcd.setCursor(1, 0);
     lcd.print("!!! START !!!");
     delay(800);
     lcd.clear();
@@ -72,7 +69,7 @@ void Menu::showResult(uint16_t result) {
     lcd.init();
     lcd.clear();
     lcd.backlight();
-    lcd.setCursor(5, 0);   //Set cursor to character 2 on line 0
+    lcd.setCursor(5, 0);
     lcd.print(result);
     lcd.print(" ms");
 }
@@ -129,7 +126,7 @@ int Menu::chooseNumber(int minValue, int maxValue, String message)
                 } else {
                     number--;
                 }
-                
+
                 lcd.clear();
                 lcd.setCursor(0, 0);
                 lcd.print(message);
@@ -174,7 +171,7 @@ int isUpButtonPressed = digitalRead(BUTTON_UP_PIN);
         if (optionNumber < 5) {
             optionNumber++;
             displayMenu(optionNumber);
-            delay(200);
+            timerDelay(200);
         }
     }
 
@@ -188,46 +185,27 @@ int isUpButtonPressed = digitalRead(BUTTON_UP_PIN);
                     analogWrite(FALSE_START_LED_PIN, 255);
                     analogWrite(VIBRATION_PIN, 255);
                     showFalseStartMessage();
-                    delay(1000);
+                    timerDelay(1000);
                     digitalWrite(FALSE_START_LED_PIN, LOW);
                     analogWrite(VIBRATION_PIN, 0);
                     this->optionNumber = 0;
                     displayMenu(optionNumber);
-                    delay(500);
+                    timerDelay(500);
                 } else {
                     showResult(finalResult);
                     //epromController.clearEEPROM();
-                    GameData soundGameData;
-                    soundGameData.setReflexTime(finalResult);
-                    soundGameData.setGameType(0);
-                    soundGameData.setDate("19:00:00 10.10.2000");
-                    epromController.addGameData(soundGameData);
+                    GameData ledGameData;
+                    char date[25];
+                    ledGameData.setReflexTime(finalResult);
+                    ledGameData.setGameType(1);
+                    rtcController.getCurrentDateTimeAsString().toCharArray(date, 25);
+                    ledGameData.setDate(date);
+                    epromController.addGameData(ledGameData);
                     epromController.saveGameData();
-                    Serial.println("Dane z eepromController: ");
+                    Serial.println("data saved");
                     Serial.println(epromController.getGameDataAsString());
-                    // Serial.println("");
-                    // Serial.println("");
-
-                    // Serial.println("Dane z eeprom: ");      
-                    // Deque<GameData> dataRead = Deque<GameData>(5);
-                    // GameData testGameData;
-                    // String testString;
-                    // // for(int i=0;i<23;i++){
-                    // //     if (i > 2) {
-                    // //         testString += char(EEPROM.read(i));
-                    // //     } else {
-                    // //         testString += EEPROM.read(i);
-                    // //     }
-                        
-                    // // }
-                    
-                    // // Serial.println(testString);
-                    
-                    // testGameData = EEPROM.get(0, testGameData);
-
+                    showResult(finalResult);
                     bool flaga = false;
-                    
-
 
                     while (!flaga) {
                         if (!digitalRead(BUTTON_ENTER_PIN) == HIGH) {
@@ -235,9 +213,9 @@ int isUpButtonPressed = digitalRead(BUTTON_UP_PIN);
                         }
                     }
 
-                    this->optionNumber = 0;
+                    this->optionNumber = 1;
                     displayMenu(optionNumber);
-                    delay(500);
+                    timerDelay(500);
                 }
                 break;
             }
@@ -277,8 +255,8 @@ int isUpButtonPressed = digitalRead(BUTTON_UP_PIN);
 
                     this->optionNumber = 1;
                     displayMenu(optionNumber);
-                    delay(500);
-            
+                    timerDelay(500);
+
                 }
                 break;
             }
@@ -286,7 +264,7 @@ int isUpButtonPressed = digitalRead(BUTTON_UP_PIN);
                 handleEEPROMClear();
                 this->optionNumber = 2;
                 displayMenu(optionNumber);
-                delay(500);
+                timerDelay(500);
                 break;
             }
 
@@ -297,22 +275,22 @@ int isUpButtonPressed = digitalRead(BUTTON_UP_PIN);
                     lcd.backlight();
                     lcd.setCursor(0, 0);   //Set cursor to character 2 on line 0
                     lcd.print("Printing last 5");
-                    lcd.setCursor(0, 1); 
+                    lcd.setCursor(0, 1);
                     lcd.print("scores to SERIAL...");
                     now = millis();
                     while (millis() - now < 2000) {
-                        
+
                     }
                     this->epromController.loadDataFromEEPROM();
                     Serial.println(this->epromController.getGameDataAsString());
                     lcd.clear();
                     lcd.setCursor(0, 0);
                     lcd.print("Complete");
-                    delay(800);
+                    timerDelay(800);
                     lcd.clear();
                     this->optionNumber = 3;
                     displayMenu(optionNumber);
-                    delay(500);
+                    timerDelay(500);
                     break;
             }
 
@@ -325,7 +303,7 @@ int isUpButtonPressed = digitalRead(BUTTON_UP_PIN);
                 lcd.setCursor(0, 1);   //Move cursor to character 2 on line 1
                 lcd.print(rtcController.getCurrentTimeAsString());
                 bool flag = false;
-    
+
                 unsigned long now = millis();
 
                 while (!flag) {
@@ -345,14 +323,15 @@ int isUpButtonPressed = digitalRead(BUTTON_UP_PIN);
 
                 this->optionNumber = 4;
                 displayMenu(optionNumber);
-                delay(500);
+                timerDelay(500);
                 break;
             }
             case 5: {
                 lcd.clear();
                 lcd.setCursor(0, 0);
-                lcd.print("MANUAL(UP)");
-                lcd.print("AUTO(DOWN)");
+                lcd.print("MANUAL [UP]");
+                lcd.setCursor(0, 1);
+                lcd.print("AUTO [DOWN]");
                 while (1)
                 {
                     int isUpButtonPressed = digitalRead(BUTTON_UP_PIN);
@@ -389,13 +368,13 @@ int isUpButtonPressed = digitalRead(BUTTON_UP_PIN);
                             lcd.setCursor(0, 0);
                             lcd.print("Error while setting date");
                             timerDelay(2000);
-                        
+
                         };
                         break;
                     }
                 }
             }
-                
+
                 displayMenu(optionNumber);
                 timerDelay(500);
                 break;

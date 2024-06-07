@@ -17,19 +17,18 @@ uint16_t GameData::getReflexTime() {
     return reflexTime;
 }
 
-void GameData::setDate(char* date) {
+void GameData::setDate(char *date) {
     for (int i = 0; i < 20; i++) {
         this->date[i] = date[i];
     }
 }
 
-char* GameData::getDate() {
+char *GameData::getDate() {
     char *currDate = new char[DATETIME_CHAR_ARRAY_SIZE];
-    for (size_t i = 0; i < DATETIME_CHAR_ARRAY_SIZE; i++)
-    {
+    for (size_t i = 0; i < DATETIME_CHAR_ARRAY_SIZE; i++) {
         currDate[i] = date[i];
     }
-    
+
     return currDate;
 }
 

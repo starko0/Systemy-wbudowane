@@ -4,18 +4,25 @@
 #include <Arduino.h>
 
 class GameData {
-    private :
+private :
     uint8_t gameType;
     uint16_t reflexTime;
-    char date [DATETIME_CHAR_ARRAY_SIZE];
-    
-    public:
+    char date[DATETIME_CHAR_ARRAY_SIZE];
+
+public:
     GameData();
-    GameData(uint8_t gameType, uint16_t reflexTime,String date);
-    void setGameType(uint8_t gameType);
+
+    GameData(uint8_t gameType, uint16_t reflexTime, String date);
+
     uint8_t getGameType();
-    void setReflexTime(uint16_t reflexTime);
+
     uint16_t getReflexTime();
-    void setDate(char* date);
-    char* getDate();
+
+    void setReflexTime(uint16_t reflexTime);
+
+    void setGameType(uint8_t gameType);
+
+    void setDate(char *date);
+
+    char *getDate();
 };
