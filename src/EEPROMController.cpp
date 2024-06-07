@@ -60,7 +60,7 @@ void EEPROMController::loadDataFromEEPROM()
 {
     uint8_t index = 0;
     for (int i = 0; i < maxitems; i++) {
-        this->dataToSave.push_back(EEPROM.get(index, dataToSave[0]));
+        this->dataToSave.push_back(EEPROM.get(index, dataToSave[i]));
         index += sizeof(GameData)-1;
     }
 }

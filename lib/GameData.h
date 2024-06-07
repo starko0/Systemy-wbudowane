@@ -7,7 +7,7 @@ class GameData {
     private :
     uint8_t gameType;
     uint16_t reflexTime;
-    char date [MAX_CHAR_ARRAY_SIZE + 5];
+    char date [DATETIME_CHAR_ARRAY_SIZE];
     
     public:
     GameData();

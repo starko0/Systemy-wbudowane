@@ -24,8 +24,8 @@ void GameData::setDate(char* date) {
 }
 
 char* GameData::getDate() {
-    char *currDate = new char[MAX_CHAR_ARRAY_SIZE];
-    for (size_t i = 0; i < MAX_CHAR_ARRAY_SIZE; i++)
+    char *currDate = new char[DATETIME_CHAR_ARRAY_SIZE];
+    for (size_t i = 0; i < DATETIME_CHAR_ARRAY_SIZE; i++)
     {
         currDate[i] = date[i];
     }

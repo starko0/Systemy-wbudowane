@@ -303,6 +303,7 @@ int isUpButtonPressed = digitalRead(BUTTON_UP_PIN);
                     while (millis() - now < 2000) {
                         
                     }
+                    this->epromController.loadDataFromEEPROM();
                     Serial.println(this->epromController.getGameDataAsString());
                     lcd.clear();
                     lcd.setCursor(0, 0);
