@@ -2,16 +2,14 @@
 
 EEPROMController::EEPROMController() {
     uint8_t index = 0;
-    for (int i = 0; i < maxitems; i++) {
+    for (int i = 0; i < maxItems; i++) {
         this->dataToSave.push_back(EEPROM.get(index, dataToSave[0]));
         index += sizeof(GameData)-1;
     }
-
-
 }
 
 void EEPROMController::addGameData(GameData dataToSave) {
-    if(this->dataToSave.count() == maxitems) {
+    if(this->dataToSave.count() == maxItems) {
         this->dataToSave.pop_front();
     }
     this->dataToSave.push_back(dataToSave);
@@ -51,7 +49,7 @@ void EEPROMController::clearGameData() {
 }
 
 void EEPROMController::printEEPROM() {
-    for (size_t i = 0; i < sizeof(GameData) * 5; i++)
+    for (size_t i = 0; i < sizeof(GameData) * maxItems; i++)
     {
         Serial.print("Index: ");
         Serial.print(i);
