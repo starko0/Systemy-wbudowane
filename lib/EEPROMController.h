@@ -3,10 +3,13 @@
 #include "Deque.h"
 #include "GameData.h"
 
+#define QUEUE_MAX_ITEMS 5
+
+
+
 class EEPROMController
 {
 private:
-    const uint8_t maxItems = 5;
     Deque<GameData> dataToSave = Deque<GameData>(5);
 
 public:
@@ -60,4 +63,11 @@ public:
      *  @side effects: Prints all EEPROM game data through UART (Serial).
      */
     void printEEPROM();
+    /*!
+     *  @brief Load game data from EEPROM to the queue.
+     *  @param none
+     *  @returns void
+     *  @side effects: Load game data from EEPROM to the queue.
+     */
+    void loadDataFromEEPROM();
 };
