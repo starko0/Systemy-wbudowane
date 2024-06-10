@@ -24,13 +24,14 @@ volatile bool buttonPressed;
 
 uint16_t LedGame::play() {
 
+
     // Configure Timer1 with no prescaler
     TCCR1B |= (1 << CS10);
 
     // Enable Timer1 overflow interrupt
     TIMSK1 |= (1 << TOIE1);
 
-    unsigned long interval = beginGame() + previousMillis;
+    unsigned long interval = beginGame() + millis();
     noInterrupts();
 
     while (true) {
