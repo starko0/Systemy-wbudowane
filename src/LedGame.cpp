@@ -2,8 +2,20 @@
 #include "../lib/defines.h"
 #include "../lib/EEPROMController.h"
 
+volatile uint16_t timeDifference;
+
+    ISR(TIMER1_OVF_vect) {
+    // Increment the time difference by 65536
+    timeDifference += 65536;
+    }
+
 uint16_t LedGame::play() {
-    unsigned long previousMillis = millis();
+
+    // Configure Timer1 with no prescaler
+    TCCR1B |= (1 << CS10);
+
+    // Enable Timer1 overflow interrupt
+    TIMSK1 |= (1 << TOIE1);
 
     unsigned long interval = beginGame() + previousMillis;
 
@@ -17,15 +29,30 @@ uint16_t LedGame::play() {
         }
     }
 
-    startTime = millis();
 
-    while (!digitalRead(BUTTON_ENTER_PIN) == LOW) {
-        turnOnLed();
-    }
+    // Configure button pin as input and enable pull-up resistor
+    // Enable pin change interrupt PCINT0
+    PCICR |= (1 << PCIE0);
+    PCMSK0 |= (1 << PCINT0);
 
-    stopTime = millis();
+    // Enable global interrupts
+    sei();
+
+    TCNT1 = 0;
+
+  // Clear the time difference
+    timeDifference = 0;
+
+  // Clear the button pressed flag
+    bool buttonPressed = false;
+    turnOnLed(); 
+  // Wait for the button to be pressed
+    while (!buttonPressed);
+
+  // Disable the interrupt for the button pin
+    PCICR &= ~(1 << PCIE0);
     turnOffLed();
-    return stopTime - startTime;
+    return timeDifference;
 
 }
 
