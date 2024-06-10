@@ -31,6 +31,7 @@ uint16_t LedGame::play() {
     TIMSK1 |= (1 << TOIE1);
 
     unsigned long interval = beginGame() + previousMillis;
+    noInterrupts();
 
     while (true) {
         if (millis() > interval) {
@@ -47,7 +48,7 @@ uint16_t LedGame::play() {
     PCMSK0 |= (1 << PCINT0);
 
     // Enable global interrupts
-    sei();
+    interrupts();
 
     TCNT1 = 0;
 

@@ -9,6 +9,7 @@ class LedGame : public Game
 {
 
 public:
+
     /*!
      *  @brief Uses analogWrite() and LED_GAME_LED_PIN pin to turn on the LED.
      *   @returns none
