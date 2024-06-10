@@ -3,10 +3,23 @@
 #include "../lib/EEPROMController.h"
 
 volatile uint16_t timeDifference;
+volatile bool buttonPressed;
 
     ISR(TIMER1_OVF_vect) {
     // Increment the time difference by 65536
     timeDifference += 65536;
+    }
+
+    // PCINT0 Interrupt Service Routine (button press)
+    ISR(PCINT0_vect) {
+    // Check if the button is pressed (low state)
+    if (!(PINB & (1 << BUTTON_ENTER_PIN))) {
+        // Add the current Timer1 counter value to the time difference
+        timeDifference += TCNT1;
+
+        // Indicate that the button has been pressed
+        buttonPressed = true;
+    }
     }
 
 uint16_t LedGame::play() {
@@ -29,8 +42,6 @@ uint16_t LedGame::play() {
         }
     }
 
-
-    // Configure button pin as input and enable pull-up resistor
     // Enable pin change interrupt PCINT0
     PCICR |= (1 << PCIE0);
     PCMSK0 |= (1 << PCINT0);
@@ -44,7 +55,7 @@ uint16_t LedGame::play() {
     timeDifference = 0;
 
   // Clear the button pressed flag
-    bool buttonPressed = false;
+    buttonPressed = false;
     turnOnLed(); 
   // Wait for the button to be pressed
     while (!buttonPressed);
