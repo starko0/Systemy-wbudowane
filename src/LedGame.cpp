@@ -30,9 +30,8 @@ uint16_t LedGame::play() {
 
     // Enable Timer1 overflow interrupt
     TIMSK1 |= (1 << TOIE1);
-
-    unsigned long interval = beginGame() + millis();
-    noInterrupts();
+    unsigned long previousMillis = millis();
+    unsigned long interval = beginGame() + previousMillis;
 
     while (true) {
         if (millis() > interval) {
@@ -49,7 +48,7 @@ uint16_t LedGame::play() {
     PCMSK0 |= (1 << PCINT0);
 
     // Enable global interrupts
-    interrupts();
+    sei();
 
     TCNT1 = 0;
 
