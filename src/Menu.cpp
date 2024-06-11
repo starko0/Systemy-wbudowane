@@ -227,13 +227,13 @@ void Menu::handleMenu()
             {
                 showResult(finalResult);
                 // epromController.clearEEPROM();
-                GameData ledGameData;
+                GameData soundGameData;
                 char date[25];
-                ledGameData.setReflexTime(finalResult);
-                ledGameData.setGameType(1);
+                soundGameData.setReflexTime(finalResult);
+                soundGameData.setGameType(0);
                 rtcController.getCurrentDateTimeAsString().toCharArray(date, 25);
-                ledGameData.setDate(date);
-                epromController.addGameData(ledGameData);
+                soundGameData.setDate(date);
+                epromController.addGameData(soundGameData);
                 epromController.saveGameData();
                 Serial.println("data saved");
                 Serial.println(epromController.getGameDataAsString());
@@ -319,7 +319,7 @@ void Menu::handleMenu()
             lcd.init();
             lcd.clear();
             lcd.backlight();
-            lcd.setCursor(0, 0); // Set cursor to character 2 on line 0
+            lcd.setCursor(0, 0); 
             lcd.print("Printing last 5");
             lcd.setCursor(0, 1);
             lcd.print("scores to SERIAL...");

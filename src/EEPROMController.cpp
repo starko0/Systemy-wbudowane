@@ -22,8 +22,8 @@ void EEPROMController::saveGameData()
         EEPROM.put(index, this->dataToSave[i]);
         index += sizeof(GameData) - 1;
     }
-    this->printEEPROM();
-    Serial.println(this->dataToSave.count());
+    // this->printEEPROM();
+    // Serial.println(this->dataToSave.count());
 }
 
 String EEPROMController::getGameDataAsString()
