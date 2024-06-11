@@ -20,17 +20,17 @@ uint16_t SoundGame::play() {
 
     //play sound
     while (!digitalRead(BUTTON_ENTER_PIN) == LOW) {
-        playSound();
+        turnOnDevice();
     }
     stopTime = millis();
-    stopSound();
+    turnOffDevice();
     return stopTime - startTime;
 }
 
-void SoundGame::playSound() {
+void SoundGame::turnOnDevice() {
     digitalWrite(SPEAKER_PIN, HIGH);
 }
 
-void SoundGame::stopSound() {
+void SoundGame::turnOffDevice() {
     digitalWrite(SPEAKER_PIN, LOW);
 }

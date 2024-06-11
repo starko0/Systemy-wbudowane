@@ -20,20 +20,20 @@ uint16_t LedGame::play() {
     startTime = millis();
 
     while (!digitalRead(BUTTON_ENTER_PIN) == LOW) {
-        turnOnLed();
+        turnOnDevice();
     }
 
     stopTime = millis();
-    turnOffLed();
+    turnOffDevice();
     return stopTime - startTime;
 
 }
 
 
-void LedGame::turnOnLed() {
+void LedGame::turnOnDevice() {
     analogWrite(LED_GAME_LED_PIN, LED_ON_VALUE);
 }
 
-void LedGame::turnOffLed() {
+void LedGame::turnOffDevice() {
     analogWrite(LED_GAME_LED_PIN, LED_OFF_VALUE);
 }
