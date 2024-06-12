@@ -59,6 +59,18 @@ void Menu::beginGameStart()
     lcd.clear();
 }
 
+void Menu::initialize()
+{
+    lcd.init();
+    lcd.clear();
+    lcd.backlight();
+    lcd.setCursor(0, 0);
+    lcd.print(menuTitle);
+    lcd.setCursor(0, 1);
+    lcd.print(menuOptions[0]);
+    Serial.begin(9600);
+}
+
 void Menu::showResult(uint16_t result)
 {
     lcd.init();

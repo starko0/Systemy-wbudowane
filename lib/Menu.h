@@ -77,6 +77,15 @@ public:
     void showFalseStartMessage();
 
     /*!
+     * @brief Initializes the menu.
+     * @returns void
+     * @side effects: Initializes the menu (displays Initializing... title and game option.
+     * 
+     * )
+     */
+    void initialize();
+
+    /*!
      * @brief Handles display when user choosed to clear EEPROM data.
      * @returns void
      * @side effects: Handles display when user choosed to clear EEPROM data (displays Clearing... message)
