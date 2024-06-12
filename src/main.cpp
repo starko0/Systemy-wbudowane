@@ -14,12 +14,9 @@ void setup()
     pinMode(LED_GAME_LED_PIN, OUTPUT);
     pinMode(LED_MENU, OUTPUT);
     menu.initialize();
-    // pinMode(8, OUTPUT);
-    // pinMode(7, OUTPUT)
 }
 
 void loop()
 {
     menu.handleMenu();
-    // digitalWrite(8, HIGH);
 }
